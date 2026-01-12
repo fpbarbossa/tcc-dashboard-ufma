@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
+import utils
 
 st.set_page_config(page_title="Métricas Gerais", layout="wide")
+
+utils.configurar_tema_global()
 
 st.title("📊 Indicadores Gerais de Desempenho")
 
@@ -12,7 +15,7 @@ if 'dados_ppg' not in st.session_state:
 
 df = st.session_state['dados_ppg']
 
-# --- FILTRAGEM GLOBAL DE ATIVOS ---
+# --- FILTRAGEM GLOBAL DE ATIVOS (quero que filtre somente os dados dos programas ATIVOS) ---
 if 'Situação' in df.columns:
     df = df[df['Situação'].astype(str).str.strip().str.upper() == 'ATIVO']
 

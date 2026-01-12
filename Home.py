@@ -1,10 +1,11 @@
 import streamlit as st
 import pandas as pd
+import utils
 
-st.set_page_config(
-    page_title="Dashboard - Monografia AA UFMA",
-    layout="wide"
-)
+st.set_page_config(page_title="Dashboard - Monografia AA UFMA", layout="wide")
+
+# Configura o tema global (claro/escuro)
+utils.configurar_tema_global()
 
 # --- Função de Carregamento e Tratamento Inicial ---
 @st.cache_data

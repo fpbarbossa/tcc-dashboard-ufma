@@ -1,7 +1,10 @@
 import streamlit as st
 import pandas as pd
+import utils
 
 st.set_page_config(page_title="Ações Afirmativas", layout="wide")
+
+utils.configurar_tema_global()
 
 st.title("⚖️ Indicadores de Ações Afirmativas (Ativos)")
 
