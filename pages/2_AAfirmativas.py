@@ -6,7 +6,7 @@ st.set_page_config(page_title="Ações Afirmativas", layout="wide")
 
 #utils.configurar_tema_global()
 
-st.title("⚖️ Indicadores de Ações Afirmativas (Ativos)")
+st.title("Indicadores de Ações Afirmativas (Ativos)")
 
 if 'dados_ppg' not in st.session_state:
     st.error("Por favor, faça o upload do arquivo na página 'Home' primeiro.")
