@@ -6,7 +6,7 @@ import utils
 st.set_page_config(page_title="Gráficos", layout="wide")
 
 # --- RECUPERA CONFIGURAÇÃO DO TEMA ---
-#config_visual = utils.configurar_tema_global()
+config_visual = utils.configurar_tema_global()
 
 st.title("📈 Análises Visuais (Ativos)")
 
