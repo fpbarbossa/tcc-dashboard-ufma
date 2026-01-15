@@ -30,15 +30,21 @@ def carregar_dados(uploaded_file):
         return None
 
 # --- Cabeçalho Institucional ---
-col_logo, col_titulo = st.columns([1, 4])
+col_logo, col_logo1  = st.columns([6, 6])
 
 with col_logo:
-    # Espaço reservado para logo (opcional) ou ícone
-    st.markdown("### UFMA")
+    try:
+        st.image("logo_ufma.png", width=200)
+    except:
+        st.write("UFMA") # Texto alternativo caso a imagem falhe
     st.caption("Universidade Federal do Maranhão")
 
-with col_titulo:
-    st.title("Dados sobre as Ações Afirmativas na Pós-Graduação da UFMA")
+with col_logo1:
+    try:
+        st.image("logo_bict.png", width=200)
+    except:
+        st.write("Bict") # Texto alternativo caso a imagem falhe
+    st.caption("Bacharelado em Ciências e Tecnologia")
 
 st.markdown("---")
 
@@ -54,10 +60,10 @@ with col_info1:
     """)
 
 with col_info2:
-    st.markdown("** Curso:** Bacharelado em Ciências e Tecnologia")
-    st.markdown("** Aluno:** Felipe Pereira Barbosa")
-    st.markdown("** Orientador:** Prof. Davi Viana dos Santos")
-    st.markdown("** Ano:** 2026")
+    st.markdown("**Curso:** Bacharelado em Ciências e Tecnologia")
+    st.markdown("**Aluno:** Felipe Pereira Barbosa")
+    st.markdown("**Orientador:** Prof. Davi Viana dos Santos")
+    st.markdown("**Ano:** 2026")
 
 st.markdown("---")
 
