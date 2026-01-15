@@ -4,7 +4,7 @@ import utils
 
 st.set_page_config(page_title="Métricas Gerais", layout="wide")
 
-utils.configurar_tema_global()
+#utils.configurar_tema_global()
 
 st.title("📊 Indicadores Gerais de Desempenho")
 
