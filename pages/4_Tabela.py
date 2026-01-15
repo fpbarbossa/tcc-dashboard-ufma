@@ -3,7 +3,7 @@ import pandas as pd
 
 st.set_page_config(page_title="Tabela de Dados", layout="wide")
 
-st.title("📝 Base de Dados Completa")
+st.title(" Base de Dados Completa")
 
 if 'dados_ppg' not in st.session_state:
     st.error("Por favor, faça o upload do arquivo na página 'Home' primeiro.")
@@ -29,7 +29,7 @@ st.write(f"Exibindo **{len(df_filtrado)}** registros.")
 
 csv = df_filtrado.to_csv(index=False).encode('utf-8')
 st.download_button(
-    label="📥 Baixar dados filtrados (CSV)",
+    label=" Baixar dados filtrados (CSV)",
     data=csv,
     file_name='dados_filtrados.csv',
     mime='text/csv',

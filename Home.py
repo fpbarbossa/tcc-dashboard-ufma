@@ -62,7 +62,7 @@ with col_info2:
 st.markdown("---")
 
 # --- Área de Upload ---
-st.markdown("### 📂 Fonte de Dados")
+st.markdown("### Fonte de Dados")
 
 arquivo = st.file_uploader("Carregar arquivo CSV (Base de Dados)", type=["csv"])
 
@@ -78,14 +78,9 @@ if arquivo is not None:
             # Salva no Session State
             st.session_state['dados_ppg'] = df_ativos
             
-            st.success(f"✅ Base de dados carregada com sucesso!")
+            st.success(f" Base de dados carregada com sucesso!")
             st.info(f"Foram encontrados **{len(df)}** registros totais, dos quais **{len(df_ativos)}** são programas **ATIVOS** que serão utilizados nas análises.")
             
-            st.markdown("### 🚀 Como navegar:")
-            st.markdown("Utilize o menu lateral à esquerda para acessar as seções:")
-            st.markdown("1.  **Métricas Gerais:** Indicadores globais de ocupação e sucesso.")
-            st.markdown("2.  **Ações Afirmativas:** Análise específica da política de cotas.")
-            st.markdown("3.  **Gráficos:** Visualizações comparativas e históricas.")
         else:
             st.error("A coluna 'Situação' não foi encontrada no arquivo. Verifique a base de dados.")
 
@@ -97,6 +92,6 @@ elif "dados_ppg" not in st.session_state:
         if df_padrao is not None and 'Situação' in df_padrao.columns:
             df_ativos_padrao = df_padrao[df_padrao['Situação'].astype(str).str.strip().str.upper() == 'ATIVO']
             st.session_state['dados_ppg'] = df_ativos_padrao
-            st.sidebar.info("ℹ️ Dados padrão carregados automaticamente.")
+            st.sidebar.info(" Dados padrão carregados automaticamente.")
     except:
-        st.warning("👈 Por favor, faça o upload do arquivo CSV para iniciar.")
+        st.warning(" Por favor, faça o upload do arquivo CSV para iniciar.")
