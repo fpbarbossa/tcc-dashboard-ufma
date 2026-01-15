@@ -8,7 +8,7 @@ st.set_page_config(page_title="Gráficos", layout="wide")
 # --- RECUPERA CONFIGURAÇÃO DO TEMA ---
 config_visual = utils.configurar_tema_global()
 
-st.title("📈 Análises Visuais (Ativos)")
+st.title("Análises Visuais (Ativos)")
 
 if 'dados_ppg' not in st.session_state:
     st.error("Por favor, faça o upload do arquivo na página 'Home' primeiro.")
@@ -54,7 +54,7 @@ def detectar_grupos(texto_celula):
                 break
     return grupos_encontrados
 
-# --- FUNÇÃO PODEROSA PARA APLICAR TEMA NOS GRÁFICOS ---
+# --- FUNÇÃO PARA APLICAR TEMA NOS GRÁFICOS ---
 def aplicar_tema(fig):
     cor_texto = config_visual['font_color']
     cor_grade = config_visual['grid_color']
@@ -89,10 +89,10 @@ def aplicar_tema(fig):
     )
     return fig
 
-# ==============================================================================
+
 # GRÁFICO 1: PIZZA
-# ==============================================================================
-st.subheader("🟢 Distribuição dos Programas Ativos por Nível")
+
+st.subheader(" Distribuição dos Programas Ativos por Nível")
 
 if 'Modalidade' in df_filtrado.columns:
     df_mod = df_filtrado['Modalidade'].value_counts().reset_index()
@@ -114,10 +114,10 @@ else:
 
 st.markdown("---")
 
-# ==============================================================================
+
 # GRÁFICO 2: EVOLUÇÃO LINHA
-# ==============================================================================
-st.subheader("📊 Evolução da Implementação por Grupo de Cota")
+
+st.subheader(" Evolução da Implementação por Grupo de Cota")
 col_pre_desc = encontrar_coluna(df_filtrado, ["Se S, quais?", "quais?"]) 
 col_in_desc = encontrar_coluna(df_filtrado, ["quais alterações?"]) 
 col_atende_todas = encontrar_coluna(df_filtrado, ["Atende todas as cotas"])
@@ -161,9 +161,9 @@ else:
 
 st.markdown("---")
 
-# ==============================================================================
+
 # GRÁFICOS 3 e 4
-# ==============================================================================
+
 col_g1, col_g2 = st.columns(2)
 
 with col_g1:
@@ -207,10 +207,10 @@ with col_g2:
 
 st.markdown("---")
 
-# ==============================================================================
+
 # GRÁFICO 5: TAXA DE SUCESSO
-# ==============================================================================
-st.subheader("⚖️ Comparativo de Eficiência: Taxa de Sucesso (Geral vs AA)")
+
+st.subheader(" Comparativo de Eficiência: Taxa de Sucesso (Geral vs AA)")
 col_inscritos_aa = 'Inscritos AA'
 if col_inscritos_aa in df_filtrado.columns:
     mask_tem_dados = pd.to_numeric(df_filtrado[col_inscritos_aa], errors='coerce').notna()
