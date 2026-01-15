@@ -34,16 +34,13 @@ col_logo, col_titulo = st.columns([1, 4])
 
 with col_logo:
     # Espaço reservado para logo (opcional) ou ícone
-    st.markdown("### 🏛️ UFMA")
+    st.markdown("### UFMA")
     st.caption("Universidade Federal do Maranhão")
 
 with col_titulo:
-    st.title("Painel de Monitoramento: Ações Afirmativas na Pós-Graduação")
+    st.title("Dados sobre as Ações Afirmativas na Pós-Graduação da UFMA")
 
 st.markdown("---")
-
-# --- Informações da Monografia ---
-st.info("ℹ️ **Sobre esta Ferramenta:** Este dashboard foi desenvolvido como parte integrante da coleta e análise de dados do seguinte Trabalho de Conclusão de Curso (TCC):")
 
 # Layout de informações do trabalho
 col_info1, col_info2 = st.columns([2, 1])
@@ -54,40 +51,27 @@ with col_info1:
     st.markdown("""
     O estudo analisa a implementação e os impactos iniciais da **Resolução N° 3.058-CONSEPE/2023**, 
     que instituiu a Política de Ações Afirmativas nos cursos de pós-graduação *stricto sensu* e *lato sensu* da UFMA.
-    
-    Esta ferramenta processa os dados dos editais e inscrições para visualizar:
-    * A evolução da adesão institucional às cotas.
-    * A oferta de vagas reservadas (Negros, Indígenas, Quilombolas, PCDs, Trans, etc.).
-    * As taxas de sucesso e ocupação dos programas.
     """)
 
 with col_info2:
-    st.markdown("#### Ficha Técnica")
-    st.markdown("**🎓 Curso:** Bacharelado em Ciências e Tecnologia")
-    st.markdown("**👤 Autor:** Felipe Pereira Barbosa")
-    st.markdown("**👨‍🏫 Orientador:** Prof. Davi Viana dos Santos")
-    st.markdown("**📅 Ano:** 2025")
+    st.markdown("** Curso:** Bacharelado em Ciências e Tecnologia")
+    st.markdown("** Aluno:** Felipe Pereira Barbosa")
+    st.markdown("** Orientador:** Prof. Davi Viana dos Santos")
+    st.markdown("** Ano:** 2026")
 
 st.markdown("---")
 
 # --- Área de Upload ---
 st.markdown("### 📂 Fonte de Dados")
-st.markdown("""
-Para gerar as visualizações utilizadas na monografia, faça o upload da base de dados abaixo.
-
-**⚠️ Nota Importante:** O sistema aplicará um filtro automático para considerar **apenas Programas com situação 'ATIVO'**, 
-garantindo que a análise reflita o cenário atual da pós-graduação.
-""")
 
 arquivo = st.file_uploader("Carregar arquivo CSV (Base de Dados)", type=["csv"])
 
-# --- Lógica de Processamento ---
+# --- Processamento ---
 if arquivo is not None:
     df = carregar_dados(arquivo)
     
     if df is not None:
         # --- FILTRAGEM GLOBAL DE ATIVOS ---
-        # Filtra aqui para garantir que todas as páginas recebam apenas dados ATIVOS
         if 'Situação' in df.columns:
             df_ativos = df[df['Situação'].astype(str).str.strip().str.upper() == 'ATIVO']
             
