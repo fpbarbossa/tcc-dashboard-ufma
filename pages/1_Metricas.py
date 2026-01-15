@@ -6,7 +6,7 @@ st.set_page_config(page_title="Métricas Gerais", layout="wide")
 
 #utils.configurar_tema_global()
 
-st.title("📊 Indicadores Gerais de Desempenho")
+st.title("Indicadores Gerais de Desempenho")
 
 # Verifica se os dados existem no session_state
 if 'dados_ppg' not in st.session_state:
@@ -60,24 +60,17 @@ total_vagas_ofertadas = somar_seguro(df_filtrado, 'Total de Vagas Oferecidas')
 total_vagas_preenchidas = somar_seguro(df_filtrado, 'Vagas totais preenchidas')
 
 # 2. Taxa de Ocupação (Cálculo Refinado)
-# Para a taxa ser justa, filtramos apenas quem tem dados consistentes (ex: inscritos > 0 ou vagas preenchidas > 0)
-# Mas para manter a consistência com os totais acima, usaremos a razão direta dos totais do filtro atual:
 taxa_ocupacao_geral = (total_vagas_preenchidas / total_vagas_ofertadas * 100) if total_vagas_ofertadas > 0 else 0
-
 
 # --- VISUALIZAÇÃO 1: KPIs ---
 st.subheader("Visão Geral do Sistema")
 
-# Aumentado para 5 colunas para caber as novas métricas
 col1, col2, col3, col4, col5 = st.columns(5)
 
 col1.metric("Programas Ativos", qtd_programas)
 col2.metric("Com dados de Inscritos", f"{qtd_com_inscritos}")
-
-# Novas Métricas
 col3.metric("Vagas Totais", f"{total_vagas_ofertadas:,.0f}")
 col4.metric("Vagas Preenchidas", f"{total_vagas_preenchidas:,.0f}")
-
 col5.metric(
     "Taxa de Ocupação", 
     f"{taxa_ocupacao_geral:.1f}%",
@@ -87,7 +80,7 @@ col5.metric(
 st.markdown("---")
 
 # --- VISUALIZAÇÃO 2: TAXA DE SUCESSO (COMPARATIVO GERAL vs AA) ---
-st.subheader("⚖️ Análise Comparativa: Taxa de Sucesso (Geral vs AA)")
+st.subheader("Análise Comparativa: Taxa de Sucesso (Geral vs AA)")
 st.info("ℹ️ Esta análise considera **apenas** os cursos que divulgaram dados de inscritos AA, para garantir uma comparação justa.")
 
 col_inscritos_aa = 'Inscritos AA'
